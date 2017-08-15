@@ -14,6 +14,7 @@ require_relative '../models/address_book'
      puts "3 - Search for an entry"
      puts "4 - Import entries from a CSV"
      puts "5 - Exit"
+     puts "6 - View Entry Number n"
      print "Enter your selection: "
      selection = gets.to_i
     case selection
@@ -36,6 +37,10 @@ require_relative '../models/address_book'
        when 5
          puts "Good-bye!"
          exit(0)
+       when 6
+          system "clear"
+          view_by_number
+          main_menu
        else
          system "clear"
          puts "Sorry, that is not a valid input"
@@ -55,6 +60,24 @@ require_relative '../models/address_book'
        
    end
  
+ 
+   def view_by_number
+    puts "Entry Number?"
+    entry_number = gets.to_i
+    puts entry_number.class
+    if entry_number.class == Fixnum 
+        if entry_number <= address_book.entries.length && entry_number > 0
+            puts address_book.entries[(entry_number-1)].to_s
+            entry_submenu(address_book.entries[(entry_number -1)])
+        else
+            puts "Not a Valid Entry Number"
+            view_by_number
+        end
+    else
+        puts "Please input a number >:("
+   end
+  end
+   
    def create_entry
        
      system "clear"
