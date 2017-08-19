@@ -48,5 +48,18 @@
      end
 
      return nil
-     end
+  end
+     
+  def iterative_search(name)
+    check = 0
+    upper = entries.length - 1
+    while check <= upper
+      check_name = entries[check].name
+      if name == check_name
+       return entries[check]
+      end
+      check += 1
+    end
+    return nil
+  end
  end
