@@ -134,4 +134,11 @@
      expect(entry).to be_nil
    end
  
-  end
+    describe "scuttle" do
+      it "clears out the entries array" do
+       book.import_from_csv("entries.csv")
+       book.scuttle
+       expect(book.entries.size).to eq 0 
+      end
+    end    
+end

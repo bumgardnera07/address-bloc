@@ -14,6 +14,7 @@ require_relative '../models/address_book'
      puts "3 - Search for an entry"
      puts "4 - Import entries from a CSV"
      puts "5 - Exit"
+     puts "6 - Delete all entries"
      print "Enter your selection: "
      selection = gets.to_i
     case selection
@@ -36,6 +37,10 @@ require_relative '../models/address_book'
        when 5
          puts "Good-bye!"
          exit(0)
+       when 6
+         puts "3....2....1...."
+         scuttle
+         main_menu
        else
          system "clear"
          puts "Sorry, that is not a valid input"
@@ -54,7 +59,12 @@ require_relative '../models/address_book'
      puts "End of entries"       
        
    end
- 
+
+   def scuttle
+    @address_book.scuttle
+    puts "KABOOM"
+   end
+   
    def create_entry
        
      system "clear"
@@ -130,7 +140,7 @@ require_relative '../models/address_book'
          entry_submenu(entry)
      end
    end
-   
+    
    def delete_entry(entry)
     address_book.entries.delete(entry)
     puts "#{entry.name} has been deleted"
